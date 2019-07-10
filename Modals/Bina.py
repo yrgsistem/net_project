@@ -1,9 +1,15 @@
 class Bina:
 
-    def __init__(self,ad,backboneip):
+    def __init__(self,id,ad,backboneip):
+        self.__id = id
         self.__ad = ad
         self.__backboneip = backboneip
 
+    def getId(self):
+        return self.__id
+
+    def setId(self,id):
+        self.__id = id
 
     def getAd(self):
         return self.__ad
