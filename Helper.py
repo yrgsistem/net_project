@@ -51,10 +51,18 @@ class Helper:
         a = (decimal.split(' '))
         portint = str(a[3])
         metin = SnmpProtocol.execute(switchsingle,'1.3.6.1.2.1.31.1.1.1.1.'+portint)
-        b = (metin.split(' '))
-        return b[3]
+        if (len(metin) > 0):
+            b = (metin.split(' '))
+            port = b[3]
+        else:
+            port = ""
+        return port
 
     def findip(mac,backboneip,SnmpProtocol):
         metin = SnmpProtocol.execute(backboneip,'1.3.6.1.2.1.4.22.1.2','"'+mac+'"')
-        b = (metin.split(' ')[0].split('.'))
-        return b[11]+'.'+b[12]+'.'+b[13]+'.'+b[14]
+        if(len(metin) > 0):
+            b = (metin.split(' ')[0].split('.'))
+            ip = b[11]+'.'+b[12]+'.'+b[13]+'.'+b[14]
+        else:
+            ip = ""
+        return ip
